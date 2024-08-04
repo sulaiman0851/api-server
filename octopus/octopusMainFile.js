@@ -1,4 +1,4 @@
-require("./lib/listmenu");
+require("./lib/listmenu.js");
 const {
   BufferJSON,
   WA_DEFAULT_EPHEMERAL,
@@ -15,7 +15,7 @@ const fs = require("fs");
 const fsx = require("fs-extra");
 const path = require("path");
 const util = require("util");
-const { color } = require("./lib/color");
+const { color } = require("./lib/color.js");
 const chalk = require("chalk");
 const moment = require("moment-timezone");
 const cron = require("node-cron");
@@ -31,7 +31,7 @@ const fg = require("api-dylux");
 const googleTTS = require("google-tts-api");
 const jsobfus = require("javascript-obfuscator");
 const { translate } = require("@vitalets/google-translate-api");
-const scp2 = require("./lib/scraper2");
+const scp2 = require("./lib/scraper2.js");
 const pkg = require("imgur");
 const { ImgurClient } = pkg;
 const client = new ImgurClient({ clientId: "a0113354926015a" });
@@ -45,14 +45,14 @@ const {
   UploadFileUgu,
   webp2mp4File,
   floNime,
-} = require("./lib/uploader");
+} = require("./lib/uploader.js");
 const {
   toAudio,
   toPTT,
   toVideo,
   ffmpeg,
   addExifAvatar,
-} = require("./lib/converter");
+} = require("./lib/converter.js");
 const {
   smsg,
   getGroupAdmins,
@@ -75,7 +75,7 @@ const {
   buffergif,
   reSize,
   ucapan,
-} = require("./assets/function/myfunc");
+} = require("./assets/function/myfunc.js");
 //prem owner function
 const {
   addPremiumUser,
@@ -84,7 +84,7 @@ const {
   expiredPremiumCheck,
   checkPremiumUser,
   getAllPremiumUser,
-} = require("./lib/premiun");
+} = require("./lib/premiun.js");
 //data
 let bad = JSON.parse(fs.readFileSync("./assets/bad.json"));
 let premium = JSON.parse(
@@ -193,11 +193,11 @@ const ApkXeon = JSON.parse(
 );
 
 //bug database
-const { xeontext1 } = require("./assets/function/Bug/xeontext1");
-const { xeontext2 } = require("./assets/function/Bug/xeontext2");
-const { xeontext3 } = require("./assets/function/Bug/xeontext3");
-const { xeontext4 } = require("./assets/function/Bug/xeontext4");
-const { xeontext5 } = require("./assets/function/Bug/xeontext5");
+const { xeontext1 } = require("./assets/function/Bug/xeontext1.js");
+const { xeontext2 } = require("./assets/function/Bug/xeontext2.js");
+const { xeontext3 } = require("./assets/function/Bug/xeontext3.js");
+const { xeontext4 } = require("./assets/function/Bug/xeontext4.js");
+const { xeontext5 } = require("./assets/function/Bug/xeontext5.js");
 
 const xeonverifieduser = JSON.parse(
   fs.readFileSync("./assets/database/data/role/user.json")
@@ -1915,7 +1915,7 @@ click https://wa.me/${botNumber.split`@`[0]}`,
         {
           if (m.isGroup) return replygc(mess.private);
           if (!isPrem) return replyprem(mess.premium);
-          const { jadiBot, conns } = require("./jadiBot");
+          const { jadiBot, conns } = require("./jadiBot.js");
           jadiBot(OctopusBotzz, m, from);
         }
         break;
@@ -4430,7 +4430,7 @@ ${themeemoji} URL: ${repoData.html_url}
               `Reply sticker with caption *${prefix + command}*`
             );
           await XeonStickWait();
-          const { remini } = require("./lib/remini");
+          const { remini } = require("./lib/remini.js");
           let media = await OctopusBotzz.downloadAndSaveMediaMessage(qmsg);
           let ran = await getRandom(".png");
           exec(`ffmpeg -i ${media} ${ran}`, (err) => {
@@ -4531,7 +4531,7 @@ ${themeemoji} URL: ${repoData.html_url}
             );
           await XeonStickWait();
           let media = await OctopusBotzz.downloadMediaMessage(qmsg);
-          let { toPTT } = require("./lib/converter");
+          let { toPTT } = require("./lib/converter.js");
           let audio = await toPTT(media, "mp4");
           OctopusBotzz.sendMessage(
             m.chat,
@@ -4838,7 +4838,7 @@ ${themeemoji} URL: ${repoData.html_url}
       case "ttt":
       case "tictactoe":
         {
-          let TicTacToe = require("./lib/tictactoe");
+          let TicTacToe = require("./lib/tictactoe.js");
           this.game = this.game ? this.game : {};
           if (
             Object.values(this.game).find(
@@ -4994,7 +4994,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`;
         {
           if (kuismath.hasOwnProperty(m.sender.split("@")[0]))
             replyLinkGc(`There are still unfinished sessions!`);
-          let { genMath, modes } = require("./lib/math");
+          let { genMath, modes } = require("./lib/math.js");
           if (!text)
             return replyLinkGc(
               `Mode: ${Object.keys(modes).join(
@@ -5932,7 +5932,7 @@ ${meg.result}`);
       case "style":
       case "styletext":
         {
-          let { styletext } = require("./lib/scraper");
+          let { styletext } = require("./lib/scraper.js");
           if (!text) return replyLinkGc("Enter Query text!");
           let anu = await styletext(text);
           let teks = `Style Text From ${text}\n\n`;
@@ -5979,7 +5979,7 @@ ${meg.result}`);
             return replyLinkGc(
               `Example : ${prefix + command} anime whatsapp status`
             );
-          const xeonplaymp3 = require("./lib/ytdl");
+          const xeonplaymp3 = require("./lib/ytdl.js");
           let yts = require("youtube-yts");
           let search = await yts(text);
           let anup3k = search.videos[0];
@@ -6009,7 +6009,7 @@ ${meg.result}`);
         break;
       case "ytmp3":
       case "ytaudio":
-        let xeonaudp3 = require("./lib/ytdl");
+        let xeonaudp3 = require("./lib/ytdl.js");
         if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text))
           return replyLinkGc(
             `Where's the yt link?\nExample: ${
@@ -6040,7 +6040,7 @@ ${meg.result}`);
       case "ytmp4":
       case "ytvideo":
         {
-          const xeonvidoh = require("./lib/ytdl");
+          const xeonvidoh = require("./lib/ytdl.js");
           if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text))
             replyLinkGc(
               `Where is the link??\n\nExample : ${
@@ -6092,7 +6092,7 @@ ${meg.result}`);
         {
           if (!q) return replyLinkGc(`Example : ${prefix + command} link`);
           if (!q.includes("tiktok")) return replyLinkGc(`Link Invalid!!`);
-          require("./lib/tiktok")
+          require("./lib/tiktok.js")
             .Tiktok(q)
             .then((data) => {
               OctopusBotzz.sendMessage(
@@ -6110,7 +6110,7 @@ ${meg.result}`);
         {
           if (!q) return replyLinkGc(`Example : ${prefix + command} link`);
           if (!q.includes("tiktok")) return replyLinkGc(`Link Invalid!!`);
-          require("./lib/tiktok")
+          require("./lib/tiktok.js")
             .Tiktok(q)
             .then((data) => {
               const xeontikmp3 = { url: data.audio };
@@ -6259,7 +6259,7 @@ ${themeemoji} Title: ${result.title}`;
         {
           if (!q) return replyLinkGc(`Example ${prefix + command} DGXeon`);
           await XeonStickWait();
-          let githubstalk = require("./lib/scraper");
+          let githubstalk = require("./lib/scraper.js");
           aj = await githubstalk.githubstalk(`${q}`);
           OctopusBotzz.sendMessage(
             m.chat,
@@ -6295,7 +6295,7 @@ Updated At : ${aj.updated_at}`,
         {
           if (!q) return replyLinkGc(`Example ${prefix + command} xeonapi`);
           await XeonStickWait();
-          let npmstalk = require("./lib/scraper");
+          let npmstalk = require("./lib/scraper.js");
           eha = await npmstalk.npmstalk(q);
           replyLinkGc(`*/ Npm Stalker \\*
 
@@ -6313,7 +6313,7 @@ Latest Publish Time : ${eha.latestPublishTime}`);
         {
           if (!q) return replyLinkGc(`Example ${prefix + command} 946716486`);
           await XeonStickWait();
-          let ffstalk = require("./lib/scraper");
+          let ffstalk = require("./lib/scraper.js");
           eeh = await ffstalk.ffstalk(`${q}`);
           replyLinkGc(`*/ Free Fire Stalker \\*
 
@@ -6326,7 +6326,7 @@ Nickname : ${eeh.nickname}`);
           if (!q)
             return replyLinkGc(`Example ${prefix + command} 530793138|8129`);
           await XeonStickWait();
-          let mlstalk = require("./lib/scraper");
+          let mlstalk = require("./lib/scraper.js");
           let dat = await mlstalk.mlstalk(q.split("|")[0], q.split("|")[1]);
           replyLinkGc(`*/ Mobile Legend Stalker \\*
 
@@ -6443,7 +6443,7 @@ ID Zone: ${q.split("|")[1]}`);
             return replyLinkGc(
               `Send/reply text with captions ${prefix + command}`
             );
-          let { eBinary } = require("./lib/binary");
+          let { eBinary } = require("./lib/binary.js");
           let eb = await eBinary(`${q}`);
           replyLinkGc(eb);
         }
@@ -6454,7 +6454,7 @@ ID Zone: ${q.split("|")[1]}`);
             return replyLinkGc(
               `Send/reply text with captions ${prefix + command}`
             );
-          let { dBinary } = require("./lib/binary");
+          let { dBinary } = require("./lib/binary.js");
           let db = await dBinary(`${q}`);
           replyLinkGc(db);
         }
@@ -6497,7 +6497,7 @@ ID Zone: ${q.split("|")[1]}`);
       case "pinterest":
         {
           if (!text) return replyLinkGc(`Enter Query`);
-          let { pinterest } = require("./lib/scraper");
+          let { pinterest } = require("./lib/scraper.js");
           anutrest = await pinterest(text);
           result = anutrest[Math.floor(Math.random() * anutrest.length)];
           OctopusBotzz.sendMessage(
@@ -6514,7 +6514,7 @@ ID Zone: ${q.split("|")[1]}`);
         {
           if (!text)
             return replyLinkGc(`Example : ${prefix + command} black rover`);
-          let ringtone = require("./lib/scraper");
+          let ringtone = require("./lib/scraper.js");
           let anutone2 = await ringtone(text);
           let result = anutone2[Math.floor(Math.random() * anutone2.length)];
           OctopusBotzz.sendMessage(
@@ -7032,7 +7032,7 @@ ID Zone: ${q.split("|")[1]}`);
               `Send/Reply Photos With Captions ${prefix + command}`
             );
           await XeonStickWait();
-          const { remini } = require("./lib/remini");
+          const { remini } = require("./lib/remini.js");
           let media = await quoted.download();
           let proses = await remini(media, "enhance");
           OctopusBotzz.sendMessage(
@@ -7537,7 +7537,7 @@ Cieeee, What's Going On❤️💖👀`,
         {
           if (!text) return replyLinkGc("Enter Query Title");
           await XeonStickWait();
-          let { wallpaper } = require("./lib/scraper");
+          let { wallpaper } = require("./lib/scraper.js");
           anuwallpep = await wallpaper(text);
           result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)];
           OctopusBotzz.sendMessage(
@@ -7562,7 +7562,7 @@ Cieeee, What's Going On❤️💖👀`,
         {
           if (!text) return replyLinkGc("Enter Query Title");
           await XeonStickWait();
-          let { wikimedia } = require("./lib/scraper");
+          let { wikimedia } = require("./lib/scraper.js");
           let anumedia = await wikimedia(text);
           result = anumedia[Math.floor(Math.random() * anumedia.length)];
           OctopusBotzz.sendMessage(
@@ -10525,7 +10525,7 @@ Cieeee, What's Going On❤️💖👀`,
           if (!q)
             return replyLinkGc(`Example : ${prefix + command} OctopusBotzz`);
           await XeonStickWait();
-          const photooxy = require("./lib/photooxy");
+          const photooxy = require("./lib/photooxy.js");
           let link;
           if (/stonetext/.test(command))
             link =

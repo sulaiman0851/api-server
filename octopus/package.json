@@ -11,7 +11,7 @@
   },
   "scripts": {
     "code": "node main.js",
-    "start": "node start.js"
+    "start": "PORT=4000 node app.js"
   },
   "author": "sulaiman0851",
   "license": "MIT",
